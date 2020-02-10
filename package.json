@@ -1,0 +1,18 @@
+{
+  "name": "webtoys",
+  "version": "1.0.0",
+  "description": "A collection of front-end web projects",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronWizard/webtoys.git"
+  },
+  "author": "Aaron MacDonald",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AaronWizard/webtoys/issues"
+  },
+  "homepage": "https://github.com/AaronWizard/webtoys#readme"
+}
