@@ -3,5 +3,10 @@ import ReactDOM from 'react-dom';
 
 const root = document.getElementById('root');
 if (root) {
-	ReactDOM.render(<p>Hello world</p>, root);
+	ReactDOM.render(
+		<p>
+			Hello World
+		</p>,
+		root,
+	);
 }
