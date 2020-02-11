@@ -5,7 +5,7 @@ import getDogs from '../../apis/dogs';
 import ImageWheel from './ImageWheel';
 import HomeLink from '../HomeLink';
 
-const dogCount = 6;
+const dogCount = 7;
 
 class ViewDogs extends React.Component
 {
@@ -14,6 +14,7 @@ class ViewDogs extends React.Component
 		super(props);
 		this.state = {
 			dogs: [],
+			addingDog: false,
 		};
 	}
 
@@ -24,17 +25,47 @@ class ViewDogs extends React.Component
 
 	moreDogs = () =>
 	{
-		console.log('dogs');
+		const { addingDog } = this.state;
+		if (!addingDog)
+		{
+			getDogs().then((newDogs) =>
+			{
+				this.setState((state) =>
+				{
+					const { dogs } = state;
+					const updatedDogs = dogs.concat(newDogs);
+
+					return {
+						dogs: updatedDogs,
+						addingDog: true,
+					};
+				});
+
+				setTimeout(() =>
+				{
+					this.setState((state) =>
+					{
+						const { dogs } = state;
+						const updatedDogs = dogs.slice(1);
+
+						return {
+							dogs: updatedDogs,
+							addingDog: false,
+						};
+					});
+				}, 500);
+			});
+		}
 	};
 
 	render()
 	{
-		const { dogs } = this.state;
+		const { dogs, addingDog } = this.state;
 		return (
 			<div>
 				<h2>View Dogs</h2>
 				<div className="dog-view">
-					<ImageWheel images={dogs} />
+					<ImageWheel images={dogs} rotating={addingDog} />
 					<div className="view-box" />
 					<button
 						type="button"
