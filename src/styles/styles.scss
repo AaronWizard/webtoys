@@ -20,6 +20,10 @@ h2 {
 }
 
 #root {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+
 	min-height: 100vh;
 
 	display: flex;
@@ -38,4 +42,4 @@ h2 {
 	margin-top: 2rem;
 }
 
-@import "viewdogs"
+@import "viewdogs";
