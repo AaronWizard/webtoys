@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NewTabLink = ({ url, children }) => (
+const TabLink = ({ url, children }) => (
 	<a
 		href={url}
 		target="_blank"
@@ -11,13 +11,13 @@ const NewTabLink = ({ url, children }) => (
 	</a>
 );
 
-NewTabLink.propTypes = {
+TabLink.propTypes = {
 	url: PropTypes.string.isRequired,
 	children: PropTypes.node,
 };
 
-NewTabLink.defaultProps = {
+TabLink.defaultProps = {
 	children: null,
 };
 
-export default NewTabLink;
+export default TabLink;
