@@ -6,7 +6,6 @@ import ImageWheel from './ImageWheel';
 import HomeLink from '../HomeLink';
 
 const dogCount = 6;
-const slideCount = 14;
 
 class ViewDogs extends React.Component
 {
@@ -35,7 +34,7 @@ class ViewDogs extends React.Component
 			<div>
 				<h2>View Dogs</h2>
 				<div className="dog-view">
-					<ImageWheel images={dogs} slideCount={slideCount} />
+					<ImageWheel images={dogs} />
 					<div className="view-box" />
 					<button
 						type="button"
