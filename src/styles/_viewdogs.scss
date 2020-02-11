@@ -1,5 +1,7 @@
 .dog-view {
 	position: relative;
+
+	min-width: 16rem;
 }
 
 .wheel-container {
@@ -66,7 +68,7 @@ $wheel-padding: $slide-radius - 8%;
 $view-box-height: 60%;
 
 .view-box {
-	$borderWidth: 1rem;
+	$borderWidth: 0.75rem;
 
 	position: absolute;
 	width: calc(100% - #{$borderWidth * 2});
@@ -80,12 +82,17 @@ $view-box-height: 60%;
 	border-radius: 2rem;
 }
 .view-box-button {
-	$borderWidth: 0.5rem;
+	$borderWidth: 0.75rem;
 	padding: $borderWidth;
 
+	$size: 5rem;
+
+	width: $size;
+	height: $size;
+
 	position: absolute;
-	left: 80%;
-	top: 100% - $view-box-height;
+	right: 0;
+	top: calc(100% - #{$view-box-height} - #{$size + ($borderWidth * 2)});
 
 	background-color: orange;
 	border-color: orange;
@@ -93,7 +100,11 @@ $view-box-height: 60%;
 	border-width: $borderWidth;
 	border-radius: 50%;
 
-	font-size: 2em;
+	font-size: 2rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 
 	cursor: pointer;
