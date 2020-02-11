@@ -5,7 +5,8 @@ import getDogs from '../../apis/dogs';
 import ImageWheel from './ImageWheel';
 import HomeLink from '../HomeLink';
 
-const initialDogCount = 14;
+const dogCount = 7;
+const slideCount = 14;
 
 class ViewDogs extends React.Component
 {
@@ -19,7 +20,7 @@ class ViewDogs extends React.Component
 
 	componentDidMount()
 	{
-		getDogs(initialDogCount).then((dogs) => this.setState({ dogs }));
+		getDogs(dogCount).then((dogs) => this.setState({ dogs }));
 	}
 
 	renderDogs()
@@ -29,7 +30,7 @@ class ViewDogs extends React.Component
 		const { dogs } = this.state;
 		if (dogs.length > 0)
 		{
-			result = <ImageWheel images={dogs} />;
+			result = <ImageWheel images={dogs} slideCount={slideCount} />;
 		}
 
 		return result;

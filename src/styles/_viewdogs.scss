@@ -1,10 +1,11 @@
-$wheel-diameter: 24rem;
-$slide-radius: 2rem;
+$wheel-diameter: 20rem;
+$slide-radius: 1.75rem;
 
 .wheel-outline {
 	width: $wheel-diameter;
 	height: $wheel-diameter;
-	padding: $slide-radius + 0.5rem;
+	margin: 1rem;
+	padding: $slide-radius + 1rem;
 
 	background-color: white;
 	border-radius: 100%;
@@ -26,7 +27,7 @@ $slide-radius: 2rem;
 	height: $slide-radius * 2;
 
 	background-color: black;
-	border-radius: 1rem;
+	border-radius: 0.75rem;
 	overflow: hidden;
 
 	img {
