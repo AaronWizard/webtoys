@@ -82,25 +82,23 @@ $view-box-height: 60%;
 	border-radius: 2rem;
 }
 .view-box-button {
-	$borderWidth: 0.75rem;
+	$borderWidth: 0.5rem;
 	padding: $borderWidth;
 
-	$size: 5rem;
+	$size: 10%;
 
 	width: $size;
 	height: $size;
 
 	position: absolute;
 	right: 0;
-	top: calc(100% - #{$view-box-height} - #{$size + ($borderWidth * 2)});
+	top: 100% - $view-box-height - $size;
 
 	background-color: orange;
 	border-color: orange;
 	border-style: outset;
 	border-width: $borderWidth;
 	border-radius: 50%;
-
-	font-size: 2rem;
 
 	display: flex;
 	align-items: center;
