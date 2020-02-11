@@ -23,6 +23,11 @@ class ViewDogs extends React.Component
 		getDogs(dogCount).then((dogs) => this.setState({ dogs }));
 	}
 
+	moreDogs = () =>
+	{
+		console.log('dogs');
+	};
+
 	render()
 	{
 		const { dogs } = this.state;
@@ -32,7 +37,14 @@ class ViewDogs extends React.Component
 				<div className="dog-view">
 					<ImageWheel images={dogs} slideCount={slideCount} />
 					<div className="view-box" />
-					<div className="view-box-button">More dogs</div>
+					<button
+						type="button"
+						onClick={this.moreDogs}
+					>
+						<div className="view-box-button">
+							More dogs
+						</div>
+					</button>
 				</div>
 				<HomeLink />
 			</div>
