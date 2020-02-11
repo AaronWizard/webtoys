@@ -2,7 +2,7 @@ import React from 'react';
 
 import getDogs from '../../apis/dogs';
 
-import TabLink from '../TabLink';
+import ImageWheel from './ImageWheel';
 import HomeLink from '../HomeLink';
 
 const initialDogCount = 10;
@@ -27,15 +27,9 @@ class ViewDogs extends React.Component
 		let result = <p>Loading</p>;
 
 		const { dogs } = this.state;
-		if (dogs.length > 1)
+		if (dogs.length > 0)
 		{
-			result = dogs.map((dog) => (
-				<TabLink url={dog}>
-					<div className="dog">
-						<img src={dog} alt={dog} />
-					</div>
-				</TabLink>
-			));
+			result = <ImageWheel images={dogs} />;
 		}
 
 		return result;
