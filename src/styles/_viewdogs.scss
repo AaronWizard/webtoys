@@ -56,20 +56,49 @@ $wheel-padding: $slide-radius - 8%;
 		height: 100%;
 		object-fit: contain;
 	}
+
+	&:hover {
+		width: $slide-radius + 2%;
+		height: $slide-radius + 2%;
+	}
 }
 
+$view-box-height: 60%;
+
 .view-box {
-	$height: 60%;
 	$borderWidth: 1rem;
 
 	position: absolute;
 	width: calc(100% - #{$borderWidth * 2});
-	height: calc(#{$height} - #{$borderWidth * 2});
-	top: 100% - $height;
+	height: calc(#{$view-box-height} - #{$borderWidth * 2});
+	top: 100% - $view-box-height;
 
 	background-color: blue;
 	border-color: blue;
 	border-style: outset;
 	border-width: $borderWidth;
 	border-radius: 2rem;
+}
+.view-box-button {
+	$borderWidth: 0.5rem;
+	padding: $borderWidth;
+
+	position: absolute;
+	left: 80%;
+	top: 100% - $view-box-height;
+
+	background-color: orange;
+	border-color: orange;
+	border-style: outset;
+	border-width: $borderWidth;
+	border-radius: 50%;
+
+	font-size: 2em;
+	text-align: center;
+
+	cursor: pointer;
+}
+
+.view-box-button:active {
+	border-style: inset;
 }

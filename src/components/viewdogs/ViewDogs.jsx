@@ -32,6 +32,7 @@ class ViewDogs extends React.Component
 				<div className="dog-view">
 					<ImageWheel images={dogs} slideCount={slideCount} />
 					<div className="view-box" />
+					<div className="view-box-button">More dogs</div>
 				</div>
 				<HomeLink />
 			</div>
