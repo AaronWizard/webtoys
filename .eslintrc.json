@@ -27,6 +27,6 @@
         "react/jsx-indent": [2, "tab"],
         "react/jsx-indent-props": [2, "tab"],
         "max-len": ["error", { "code": 80 }],
-        "brace-style": ["error", "stroustrup"]
+        "brace-style": ["error", "allman"]
     }
 }
