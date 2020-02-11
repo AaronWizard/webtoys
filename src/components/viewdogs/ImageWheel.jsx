@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import TabLink from '../TabLink';
 
-const ImageWheel = ({ images }) => (
+const wheelClass = (rotating) => `wheel${rotating ? ' slide-move' : ''}`;
+
+const ImageWheel = ({ images, rotating }) => (
 	<div className="wheel-container">
 		<div className="wheel-outline">
-			<div className="wheel">
+			<div className={wheelClass(rotating)}>
 				{images.map((image) => (
 					<TabLink url={image} key={image}>
 						<div
@@ -23,6 +25,11 @@ const ImageWheel = ({ images }) => (
 
 ImageWheel.propTypes = {
 	images: PropTypes.arrayOf(PropTypes.string).isRequired,
+	rotating: PropTypes.bool,
+};
+
+ImageWheel.defaultProps = {
+	rotating: false,
 };
 
 export default ImageWheel;

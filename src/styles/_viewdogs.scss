@@ -51,17 +51,51 @@ $_wheel-padding: $_slide-radius - 8%;
 	transform: translate(-50%, -50%) rotate($degrees + 90deg);
 }
 
+@mixin _animatedTransformSlide($index, $count) {
+	$animation-name: unique-id() !global;
+
+	@keyframes #{$animation-name} {
+		0% {
+			@include _transformSlide($index, $count);
+		}
+		25% {
+			@include _transformSlide($index - 0.25, $count);
+		}
+		50% {
+			@include _transformSlide($index - 0.5, $count);
+		}
+		75% {
+			@include _transformSlide($index - 0.75, $count);
+		}
+		100% {
+			@include _transformSlide($index - 1, $count);
+		}
+	}
+
+	animation-name: $animation-name;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+}
+
+$_slide-count: 14;
+
 .wheel {
 	width: 100%;
 	height: 100%;
 
 	position: relative;
 
-	$slide-count: 14;
-
-	@for $i from 1 through $slide-count {
+	@for $i from 1 through $_slide-count {
 		> *:nth-of-type(#{$i}) .wheel-slide {
-			@include _transformSlide($i, $slide-count);
+			@include _transformSlide($i, $_slide-count);
+		}
+	}
+}
+
+.slide-move {
+	@for $i from 1 through $_slide-count {
+		> *:nth-of-type(#{$i}) .wheel-slide {
+			@include _animatedTransformSlide($i, $_slide-count);
 		}
 	}
 }
