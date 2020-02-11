@@ -5,6 +5,8 @@ import getDogs from '../../apis/dogs';
 import TabLink from '../TabLink';
 import HomeLink from '../HomeLink';
 
+const initialDogCount = 10;
+
 class ViewDogs extends React.Component
 {
 	constructor(props)
@@ -17,7 +19,7 @@ class ViewDogs extends React.Component
 
 	componentDidMount()
 	{
-		getDogs(5).then((dogs) => this.setState({ dogs }));
+		getDogs(initialDogCount).then((dogs) => this.setState({ dogs }));
 	}
 
 	renderDogs()
@@ -25,17 +27,7 @@ class ViewDogs extends React.Component
 		let result = <p>Loading</p>;
 
 		const { dogs } = this.state;
-		if (dogs.length === 1)
-		{
-			result = (
-				<TabLink url={dogs[0]}>
-					<div className="dog">
-						<img src={dogs[0]} alt={dogs[0]} />
-					</div>
-				</TabLink>
-			);
-		}
-		else if (dogs.length > 1)
+		if (dogs.length > 1)
 		{
 			result = dogs.map((dog) => (
 				<TabLink url={dog}>
