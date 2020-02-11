@@ -6,7 +6,7 @@ import TabLink from '../TabLink';
 const slideStyle = (index, count) =>
 {
 	const step = 360 / count;
-	const degrees = -step * index;
+	const degrees = -step * (index + 1);
 	const radians = degrees * (Math.PI / 180);
 
 	const x = (Math.cos(radians) * 50) + 50;
@@ -20,20 +20,21 @@ const slideStyle = (index, count) =>
 };
 
 const ImageWheel = ({ images, slideCount }) => (
-	<div className="wheel-outline">
-		<div className="wheel">
-			{images.map((image, index) => (
-				<TabLink url={image} key={image}>
-					<div
-						className="wheel-slide"
-						style={slideStyle(index, slideCount)}
-					>
-						<img src={image} alt={image} />
-					</div>
-				</TabLink>
-			))}
+	<div className="wheel-container">
+		<div className="wheel-outline">
+			<div className="wheel">
+				{images.map((image, index) => (
+					<TabLink url={image} key={image}>
+						<div
+							className="wheel-slide"
+							style={slideStyle(index, slideCount)}
+						>
+							<img src={image} alt={image} />
+						</div>
+					</TabLink>
+				))}
+			</div>
 		</div>
-		<div />
 	</div>
 );
 

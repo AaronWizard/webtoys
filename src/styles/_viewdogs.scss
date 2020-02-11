@@ -1,11 +1,32 @@
-$wheel-diameter: 20rem;
-$slide-radius: 1.75rem;
+.dog-view {
+	position: relative;
+}
+
+.wheel-container {
+	position: relative;
+
+	$width: 75%;
+	width: $width;
+	padding-bottom: $width;
+
+	left: (100% - $width) / 2;
+}
+
+$slide-radius: 18%;
+$wheel-padding: $slide-radius - 8%;
 
 .wheel-outline {
-	width: $wheel-diameter;
-	height: $wheel-diameter;
-	margin: 1rem;
-	padding: $slide-radius + 1rem;
+	position: absolute;
+
+	$size: 100% - ($wheel-padding * 2);
+	$borderSize: 1px;
+
+	$realSize: calc(#{$size} - #{$borderSize * 2});
+
+	width: $realSize;
+	height: $realSize;
+
+	padding: $wheel-padding;
 
 	background-color: white;
 	border-radius: 100%;
@@ -23,11 +44,11 @@ $slide-radius: 1.75rem;
 .wheel-slide {
 	position: absolute;
 
-	width: $slide-radius * 2;
-	height: $slide-radius * 2;
+	width: $slide-radius;
+	height: $slide-radius;
 
 	background-color: black;
-	border-radius: 0.75rem;
+	border-radius: 25%;
 	overflow: hidden;
 
 	img {
@@ -35,4 +56,20 @@ $slide-radius: 1.75rem;
 		height: 100%;
 		object-fit: contain;
 	}
+}
+
+.view-box {
+	$height: 60%;
+	$borderWidth: 1rem;
+
+	position: absolute;
+	width: calc(100% - #{$borderWidth * 2});
+	height: calc(#{$height} - #{$borderWidth * 2});
+	top: 100% - $height;
+
+	background-color: blue;
+	border-color: blue;
+	border-style: outset;
+	border-width: $borderWidth;
+	border-radius: 2rem;
 }
