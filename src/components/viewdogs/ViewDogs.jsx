@@ -5,7 +5,7 @@ import getDogs from '../../apis/dogs';
 import ImageWheel from './ImageWheel';
 import HomeLink from '../HomeLink';
 
-const initialDogCount = 10;
+const initialDogCount = 14;
 
 class ViewDogs extends React.Component
 {

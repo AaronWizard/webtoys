@@ -1,6 +1,30 @@
+$wheel-diameter: 24rem;
+$slide-radius: 2rem;
+
+.wheel-outline {
+	width: $wheel-diameter;
+	height: $wheel-diameter;
+	padding: $slide-radius + 0.5rem;
+
+	background-color: white;
+	border-radius: 100%;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.wheel {
+	width: 100%;
+	height: 100%;
+
+	position: relative;
+}
+
 .wheel-slide {
-	width: 4rem;
-	height: 4rem;
+	position: absolute;
+
+	width: $slide-radius * 2;
+	height: $slide-radius * 2;
+
 	background-color: black;
 	border-radius: 1rem;
 	overflow: hidden;
