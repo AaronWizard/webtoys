@@ -73,10 +73,9 @@ class ViewDogs extends React.Component
 					<button
 						type="button"
 						onClick={this.moreDogs}
+						className={styles.viewboxbutton}
 					>
-						<div className={styles.viewboxbutton}>
-							More dogs
-						</div>
+						More dogs
 					</button>
 				</div>
 				<HomeLink />

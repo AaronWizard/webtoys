@@ -125,6 +125,7 @@ $_slide-count: 14;
 }
 
 $_view-box-height: 60%;
+$_view-box-border-radius: 2rem;
 
 .viewbox {
 	$borderWidth: 0.75rem;
@@ -138,34 +139,36 @@ $_view-box-height: 60%;
 	border-color: blue;
 	border-style: outset;
 	border-width: $borderWidth;
-	border-radius: 2rem;
+	border-radius: $_view-box-border-radius;
 }
 
 .viewboxbutton {
 	$borderWidth: 0.5rem;
 	padding: $borderWidth;
 
-	$size: 10%;
+	$borderSize: $borderWidth * 2;
 
-	width: $size;
-	height: $size;
+	$size: 16%;
+	$realSize: calc(#{$size} + #{$borderSize});
+
+	max-width: $realSize;
 
 	position: absolute;
 	right: 0;
-	top: 100% - $_view-box-height - $size;
+	top: 100% - $_view-box-height;
 
 	background-color: orange;
 	border-color: orange;
 	border-style: outset;
 	border-width: $borderWidth;
-	border-radius: 50%;
+	border-radius: $_view-box-border-radius;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 
-	font-size: 1rem;
+	font-size: 1.25rem;
 
 	cursor: pointer;
 }
