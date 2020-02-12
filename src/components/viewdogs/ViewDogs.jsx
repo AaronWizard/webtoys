@@ -5,6 +5,8 @@ import getDogs from '../../apis/dogs';
 import ImageWheel from './ImageWheel';
 import HomeLink from '../HomeLink';
 
+import styles from '../../styles/viewdogs.module.scss';
+
 const initialDogCount = 7;
 
 const rotationSeconds = 0.25;
@@ -65,14 +67,14 @@ class ViewDogs extends React.Component
 		return (
 			<div>
 				<h2>View Dogs</h2>
-				<div className="dog-view">
+				<div className={styles.dogview}>
 					<ImageWheel images={dogs} rotating={addingDog} />
-					<div className="view-box" />
+					<div className={styles.viewbox} />
 					<button
 						type="button"
 						onClick={this.moreDogs}
 					>
-						<div className="view-box-button">
+						<div className={styles.viewboxbutton}>
 							More dogs
 						</div>
 					</button>

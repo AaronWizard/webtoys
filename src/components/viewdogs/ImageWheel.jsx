@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 
 import TabLink from '../TabLink';
 
-const wheelClass = (rotating) => `wheel${rotating ? ' slide-move' : ''}`;
+import styles from '../../styles/viewdogs.module.scss';
+
+const wheelClass = (rotating) => [
+	styles.wheel,
+	...rotating ? [styles.slidemove] : [],
+].join(' ');
 
 const ImageWheel = ({ images, rotating }) => (
-	<div className="wheel-container">
-		<div className="wheel-outline">
+	<div className={styles.wheelcontainer}>
+		<div className={styles.wheeloutline}>
 			<div className={wheelClass(rotating)}>
 				{images.map((image) => (
 					<TabLink url={image} key={image}>
 						<div
-							className="wheel-slide"
+							className={styles.wheelslide}
 						>
 							<img src={image} alt={image} />
 						</div>

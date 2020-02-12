@@ -1,13 +1,13 @@
 @use "sass:math";
 
-.dog-view {
+.dogview {
 	position: relative;
 
 	min-width: 16rem;
 	max-width: 40rem;
 }
 
-.wheel-container {
+.wheelcontainer {
 	position: relative;
 
 	$width: 75%;
@@ -20,7 +20,7 @@
 $_slide-radius: 18%;
 $_wheel-padding: $_slide-radius - 8%;
 
-.wheel-outline {
+.wheeloutline {
 	position: absolute;
 
 	$size: 100% - ($_wheel-padding * 2);
@@ -88,21 +88,21 @@ $_slide-count: 14;
 	position: relative;
 
 	@for $i from 1 through $_slide-count {
-		> *:nth-of-type(#{$i}) .wheel-slide {
+		> *:nth-of-type(#{$i}) .wheelslide {
 			@include _transformSlide($i, $_slide-count);
 		}
 	}
 }
 
-.slide-move {
+.slidemove {
 	@for $i from 1 through $_slide-count {
-		> *:nth-of-type(#{$i}) .wheel-slide {
+		> *:nth-of-type(#{$i}) .wheelslide {
 			@include _animatedTransformSlide($i, $_slide-count);
 		}
 	}
 }
 
-.wheel-slide {
+.wheelslide {
 	position: absolute;
 
 	width: $_slide-radius;
@@ -126,7 +126,7 @@ $_slide-count: 14;
 
 $_view-box-height: 60%;
 
-.view-box {
+.viewbox {
 	$borderWidth: 0.75rem;
 
 	position: absolute;
@@ -140,7 +140,8 @@ $_view-box-height: 60%;
 	border-width: $borderWidth;
 	border-radius: 2rem;
 }
-.view-box-button {
+
+.viewboxbutton {
 	$borderWidth: 0.5rem;
 	padding: $borderWidth;
 
@@ -169,6 +170,6 @@ $_view-box-height: 60%;
 	cursor: pointer;
 }
 
-.view-box-button:active {
+.viewboxbutton:active {
 	border-style: inset;
 }
