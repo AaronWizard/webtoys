@@ -51,6 +51,8 @@ $_wheel-padding: $_slide-radius - 8%;
 	transform: translate(-50%, -50%) rotate($degrees + 90deg);
 }
 
+$_rotationTime: 0.25s;
+
 @mixin _animatedTransformSlide($index, $count) {
 	$animation-name: unique-id() !global;
 
@@ -73,7 +75,7 @@ $_wheel-padding: $_slide-radius - 8%;
 	}
 
 	animation-name: $animation-name;
-	animation-duration: 0.5s;
+	animation-duration: $_rotationTime;
 	animation-timing-function: linear;
 }
 

@@ -5,7 +5,11 @@ import getDogs from '../../apis/dogs';
 import ImageWheel from './ImageWheel';
 import HomeLink from '../HomeLink';
 
-const dogCount = 7;
+const initialDogCount = 7;
+
+const rotationSeconds = 0.25;
+const milliseconds = 1000;
+const rotationTime = rotationSeconds * milliseconds;
 
 class ViewDogs extends React.Component
 {
@@ -20,40 +24,37 @@ class ViewDogs extends React.Component
 
 	componentDidMount()
 	{
-		getDogs(dogCount).then((dogs) => this.setState({ dogs }));
+		const { dogs } = this.state;
+		getDogs(dogs, initialDogCount).then((newDogs) =>
+		{
+			this.setState({ dogs: newDogs });
+		});
 	}
 
 	moreDogs = () =>
 	{
-		const { addingDog } = this.state;
+		const { dogs, addingDog } = this.state;
 		if (!addingDog)
 		{
-			getDogs().then((newDogs) =>
+			getDogs(dogs, initialDogCount + 1).then((newDogs) =>
 			{
-				this.setState((state) =>
-				{
-					const { dogs } = state;
-					const updatedDogs = dogs.concat(newDogs);
-
-					return {
-						dogs: updatedDogs,
-						addingDog: true,
-					};
+				this.setState({
+					dogs: newDogs,
+					addingDog: true,
 				});
 
 				setTimeout(() =>
 				{
 					this.setState((state) =>
 					{
-						const { dogs } = state;
-						const updatedDogs = dogs.slice(1);
+						const updatedDogs = state.dogs.slice(1);
 
 						return {
 							dogs: updatedDogs,
 							addingDog: false,
 						};
 					});
-				}, 500);
+				}, rotationTime);
 			});
 		}
 	};
