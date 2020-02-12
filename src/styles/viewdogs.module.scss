@@ -54,7 +54,7 @@ $_wheel-padding: $_slide-radius - 8%;
 $_rotationTime: 0.25s;
 
 @mixin _animatedTransformSlide($index, $count) {
-	$animation-name: unique-id() !global;
+	$animation-name: unique-id();
 
 	@keyframes #{$animation-name} {
 		0% {
