@@ -138,18 +138,29 @@ $_view-box-border-radius: 2rem;
 .viewbox {
 	$borderWidth: 0.75rem;
 
-	//padding: $borderWidth;
+	padding: 1rem;
 
 	position: absolute;
 	width: calc(100% - #{$borderWidth * 2});
-	min-height: calc(#{$_view-box-height} - #{$borderWidth * 2});
+	height: calc(#{$_view-box-height} - #{$borderWidth * 2});
 	top: 100% - $_view-box-height;
+
+	overflow-y: scroll;
 
 	background-color: $_white;
 	border-color: $_light_blue;
 	border-style: outset;
 	border-width: $borderWidth;
 	border-radius: $_view-box-border-radius;
+
+	p {
+		margin: 0;
+		margin-bottom: 0.5em;
+	}
+
+	p:first-child {
+		margin-bottom: 0;
+	}
 }
 
 .viewboxbutton {
@@ -165,7 +176,7 @@ $_view-box-border-radius: 2rem;
 
 	position: absolute;
 	right: 0%;
-	top: 100% - $_view-box-height - $size;
+	top: 0%;
 
 	background-color: $_light_green;
 	border-color: $_green;
