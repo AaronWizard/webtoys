@@ -1,0 +1,47 @@
+$_animationTime: 0.25s;
+
+.popupimage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	border-width: 0;
+
+	background-color: #00000088;
+
+	padding: 2rem;
+
+	cursor: pointer;
+
+	animation: fadein $_animationTime;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 100%;
+	}
+}
+
+.hiding {
+	animation: fadeOut $_animationTime;
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 100%;
+	}
+	100% {
+		opacity: 0;
+	}
+}
