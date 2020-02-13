@@ -7,9 +7,10 @@ import HomeLink from '../HomeLink';
 
 import styles from '../../styles/viewdogs.module.scss';
 
-const initialDogCount = 7;
+const dogCount = 10; // viewdogs.module.scss, $_slide-count
+const visibleDogs = 4;
 
-const rotationSeconds = 0.25;
+const rotationSeconds = 0.25; // viewdogs.module.scss, $_rotationTime
 const milliseconds = 1000;
 const rotationTime = rotationSeconds * milliseconds;
 
@@ -27,7 +28,7 @@ class ViewDogs extends React.Component
 	componentDidMount()
 	{
 		const { dogs } = this.state;
-		getDogs(dogs, initialDogCount).then((newDogs) =>
+		getDogs(dogs, dogCount).then((newDogs) =>
 		{
 			this.setState({ dogs: newDogs });
 		});
@@ -35,30 +36,29 @@ class ViewDogs extends React.Component
 
 	moreDogs = () =>
 	{
-		const { dogs, addingDog } = this.state;
-		if (!addingDog)
+		this.setState({
+			addingDog: true,
+		});
+
+		setTimeout(() =>
 		{
-			getDogs(dogs, initialDogCount + 1).then((newDogs) =>
+			this.setState((state) =>
 			{
-				this.setState({
-					dogs: newDogs,
-					addingDog: true,
-				});
-
-				setTimeout(() =>
-				{
-					this.setState((state) =>
-					{
-						const updatedDogs = state.dogs.slice(1);
-
-						return {
-							dogs: updatedDogs,
-							addingDog: false,
-						};
-					});
-				}, rotationTime);
+				const updatedDogs = state.dogs.slice(1);
+				return {
+					dogs: updatedDogs,
+					addingDog: false,
+				};
 			});
-		}
+			const { dogs } = this.state;
+			if (dogs.length === visibleDogs)
+			{
+				getDogs(dogs, dogCount).then((newDogs) =>
+				{
+					this.setState({ dogs: newDogs });
+				});
+			}
+		}, rotationTime);
 	};
 
 	render()

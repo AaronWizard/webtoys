@@ -1,5 +1,8 @@
 @use "sass:math";
 
+$_slide-count: 10;
+$_rotationTime: 0.25s;
+
 .dogview {
 	position: relative;
 
@@ -17,8 +20,8 @@
 	left: (100% - $width) / 2;
 }
 
-$_slide-radius: 18%;
-$_wheel-padding: $_slide-radius - 8%;
+$_slide-radius: 25%;
+$_wheel-padding: $_slide-radius - 12%;
 
 .wheeloutline {
 	position: absolute;
@@ -51,8 +54,6 @@ $_wheel-padding: $_slide-radius - 8%;
 	transform: translate(-50%, -50%) rotate($degrees + 90deg);
 }
 
-$_rotationTime: 0.25s;
-
 @mixin _animatedTransformSlide($index, $count) {
 	$animation-name: unique-id();
 
@@ -78,8 +79,6 @@ $_rotationTime: 0.25s;
 	animation-duration: $_rotationTime;
 	animation-timing-function: linear;
 }
-
-$_slide-count: 14;
 
 .wheel {
 	width: 100%;
