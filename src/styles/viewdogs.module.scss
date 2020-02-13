@@ -3,6 +3,14 @@
 $_slide-count: 10;
 $_rotationTime: 0.25s;
 
+$_white: #FFFFFF;
+$_darkest_blue: #01060B;
+$_dark_blue: #0B4283;
+$_light_blue: #74A6E1;
+$_blue: #3072C1;
+$_light_green: #6AE1C0;
+$_green: #23C195;
+
 .dogview {
 	position: relative;
 
@@ -36,10 +44,11 @@ $_wheel-padding: $_slide-radius - 12%;
 
 	padding: $_wheel-padding;
 
-	background-color: white;
+	background-color: $_white;
 	border-radius: 100%;
 	border-width: 1px;
 	border-style: solid;
+	border-color: $_dark_blue;
 }
 
 @mixin _transformSlide($index, $count) {
@@ -107,7 +116,7 @@ $_wheel-padding: $_slide-radius - 12%;
 	width: $_slide-radius;
 	height: $_slide-radius;
 
-	background-color: black;
+	background-color: $_darkest_blue;
 	border-radius: 25%;
 	overflow: hidden;
 
@@ -134,8 +143,8 @@ $_view-box-border-radius: 2rem;
 	height: calc(#{$_view-box-height} - #{$borderWidth * 2});
 	top: 100% - $_view-box-height;
 
-	background-color: blue;
-	border-color: blue;
+	background-color: $_light_blue;
+	border-color: $_blue;
 	border-style: outset;
 	border-width: $borderWidth;
 	border-radius: $_view-box-border-radius;
@@ -156,8 +165,8 @@ $_view-box-border-radius: 2rem;
 	right: 0;
 	top: 100% - $_view-box-height;
 
-	background-color: orange;
-	border-color: orange;
+	background-color: $_light_green;
+	border-color: $_green;
 	border-style: outset;
 	border-width: $borderWidth;
 	border-radius: $_view-box-border-radius;
