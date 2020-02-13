@@ -3,7 +3,9 @@ import React from 'react';
 import getDogs from '../../apis/dogs';
 
 import ImageWheel from './ImageWheel';
+import TabLink from '../TabLink';
 import HomeLink from '../HomeLink';
+
 
 import styles from '../../styles/viewdogs.module.scss';
 
@@ -69,7 +71,40 @@ class ViewDogs extends React.Component
 				<h2>View Dogs</h2>
 				<div className={styles.dogview}>
 					<ImageWheel images={dogs} rotating={addingDog} />
-					<div className={styles.viewbox} />
+					<div className={styles.viewbox}>
+						<p>
+							Early in my career the company I worked for did a
+							web project for&nbsp;
+							<TabLink
+								url="https://en.wikipedia.org/wiki/Fisher-Price"
+							>
+								Fisher-Price
+							</TabLink>
+							, related to their&nbsp;
+							<TabLink
+								url="https://en.wikipedia.org/wiki/View-Master"
+							>
+								View-Master
+							</TabLink>
+							&nbsp;brand. I created a web site featuring a wheel
+							of images that could be turned like a real
+							View-Master toy.
+						</p>
+						<p>
+							At the time I had only jQuery to work with. Now, I
+							can recreate that image wheel using React and CSS
+							animations enhanced by Sass.
+						</p>
+						<p>
+							The image wheel I made for Fisher-Price used images
+							taken from an online catalog. For this image wheel,
+							I load pictures from&nbsp;
+							<TabLink url="https://dog.ceo/dog-api/">
+								Dog API
+							</TabLink>
+							.
+						</p>
+					</div>
 					<button
 						type="button"
 						onClick={this.moreDogs}

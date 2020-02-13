@@ -138,13 +138,15 @@ $_view-box-border-radius: 2rem;
 .viewbox {
 	$borderWidth: 0.75rem;
 
+	//padding: $borderWidth;
+
 	position: absolute;
 	width: calc(100% - #{$borderWidth * 2});
-	height: calc(#{$_view-box-height} - #{$borderWidth * 2});
+	min-height: calc(#{$_view-box-height} - #{$borderWidth * 2});
 	top: 100% - $_view-box-height;
 
-	background-color: $_light_blue;
-	border-color: $_blue;
+	background-color: $_white;
+	border-color: $_light_blue;
 	border-style: outset;
 	border-width: $borderWidth;
 	border-radius: $_view-box-border-radius;
@@ -162,8 +164,8 @@ $_view-box-border-radius: 2rem;
 	max-width: $realSize;
 
 	position: absolute;
-	right: 0;
-	top: 100% - $_view-box-height;
+	right: 0%;
+	top: 100% - $_view-box-height - $size;
 
 	background-color: $_light_green;
 	border-color: $_green;
