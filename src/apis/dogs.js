@@ -13,7 +13,10 @@ const getDogs = async (currentDogs, maxDogs) =>
 
 		const newDogs = resp.data.message;
 		const allDogs = result.concat(newDogs);
-		const filteredDogs = allDogs.filter((d, i) => allDogs.indexOf(d) === i);
+		const filteredDogs = allDogs.filter((d, i) => (
+			(allDogs.indexOf(d) === i) && (d.split('.').pop() !== 'txt')
+		));
+
 		result = filteredDogs;
 	}
 
