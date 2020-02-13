@@ -96,7 +96,7 @@ $_wheel-padding: $_slide-radius - 12%;
 	position: relative;
 
 	@for $i from 1 through $_slide-count {
-		> *:nth-of-type(#{$i}) .wheelslide {
+		> .wheelslide:nth-of-type(#{$i}) {
 			@include _transformSlide($i, $_slide-count);
 		}
 	}
@@ -104,7 +104,7 @@ $_wheel-padding: $_slide-radius - 12%;
 
 .slidemove {
 	@for $i from 1 through $_slide-count {
-		> *:nth-of-type(#{$i}) .wheelslide {
+		> .wheelslide:nth-of-type(#{$i}) {
 			@include _animatedTransformSlide($i, $_slide-count);
 		}
 	}
@@ -113,12 +113,17 @@ $_wheel-padding: $_slide-radius - 12%;
 .wheelslide {
 	position: absolute;
 
+	border-width: 0;
+	padding: 0;
+
 	width: $_slide-radius;
 	height: $_slide-radius;
 
 	background-color: $_darkest_blue;
 	border-radius: 25%;
 	overflow: hidden;
+
+	cursor: pointer;
 
 	img {
 		width: 100%;

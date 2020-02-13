@@ -4,8 +4,8 @@ import getDogs from '../../apis/dogs';
 
 import ImageWheel from './ImageWheel';
 import TabLink from '../TabLink';
+import PopupImage from '../PopupImage';
 import HomeLink from '../HomeLink';
-
 
 import styles from '../../styles/viewdogs.module.scss';
 
@@ -24,6 +24,7 @@ class ViewDogs extends React.Component
 		this.state = {
 			dogs: [],
 			addingDog: false,
+			currentDog: null,
 		};
 	}
 
@@ -63,14 +64,35 @@ class ViewDogs extends React.Component
 		}, rotationTime);
 	};
 
+	clickDog = (dog) => this.setState({ currentDog: dog });
+
+	popupHidden = () => this.setState({ currentDog: null });
+
+	showCurrentDog()
+	{
+		let result = null;
+		const { currentDog } = this.state;
+		if (currentDog)
+		{
+			result = (
+				<PopupImage src={currentDog} onHidden={this.popupHidden} />
+			);
+		}
+		return result;
+	}
+
 	render()
 	{
 		const { dogs, addingDog } = this.state;
 		return (
-			<div>
+			<>
 				<h2>View Dogs</h2>
 				<div className={styles.dogview}>
-					<ImageWheel images={dogs} rotating={addingDog} />
+					<ImageWheel
+						images={dogs}
+						rotating={addingDog}
+						onClick={this.clickDog}
+					/>
 					<div className={styles.viewbox}>
 						<p>
 							Early in my career the company I worked for did a
@@ -114,7 +136,8 @@ class ViewDogs extends React.Component
 					</button>
 				</div>
 				<HomeLink />
-			</div>
+				{this.showCurrentDog()}
+			</>
 		);
 	}
 }
