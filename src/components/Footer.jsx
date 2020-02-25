@@ -4,7 +4,7 @@ import TabLink from './TabLink';
 
 const name = 'Aaron MacDonald';
 const year = 2020;
-const linkedInURL = 'https://www.linkedin.com/in/aaron-macdonald-56585916';
+const linkedInURL = 'https://www.linkedin.com/in/aaron-j-macdonald/';
 const githubURL = 'https://github.com/AaronWizard/webtoys';
 
 const Footer = () => (
