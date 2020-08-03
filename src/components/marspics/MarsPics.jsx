@@ -112,7 +112,7 @@ class MarsPics extends React.Component
 		}
 		else if (loadingPhotos)
 		{
-			result = <div>Loading photos</div>;
+			result = <div className={styles.photos}>Loading photos</div>;
 		}
 
 		return result;
