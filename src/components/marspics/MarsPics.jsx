@@ -26,7 +26,17 @@ class MarsPics extends React.Component
 		});
 	}
 
-	selectNewDate = (date) => this.setState({ selectedDate: date });
+	filterDate = (date) =>
+	{
+		const { photosByDate } = this.state;
+		const dateKey = date.toISOString().split('T')[0];
+		return Object.prototype.hasOwnProperty.call(photosByDate, dateKey);
+	}
+
+	selectNewDate = (date) =>
+	{
+		this.setState({ selectedDate: date });
+	};
 
 	showDatePicker()
 	{
@@ -37,7 +47,9 @@ class MarsPics extends React.Component
 			result = (
 				<DatePicker
 					selected={selectedDate}
+					filterDate={this.filterDate}
 					onChange={this.selectNewDate}
+					placeholderText="Select a day"
 				/>
 			);
 		}
@@ -54,7 +66,7 @@ class MarsPics extends React.Component
 			<>
 				<h2>Mars Pics</h2>
 				<div>
-					<p>See pictures from Mars. Pick a Mars rover and a date.</p>
+					<p>See pictures from Mars taken at a set date.</p>
 
 					{this.showDatePicker()}
 				</div>
