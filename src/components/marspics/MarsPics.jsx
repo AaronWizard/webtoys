@@ -6,9 +6,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { getPhotosDataByDate, getPhotoLinks } from '../../apis/mars';
 
 import PopupImage from '../PopupImage';
+import TabLink from '../TabLink';
 import HomeLink from '../HomeLink';
 
 import styles from '../../styles/marspics.module.scss';
+
+const marsPhotoAPIURL = 'https://github.com/chrisccerami/mars-photo-api';
 
 class MarsPics extends React.Component
 {
@@ -44,6 +47,7 @@ class MarsPics extends React.Component
 	selectNewDate = async (date) =>
 	{
 		this.setState({
+			selectedDate: date,
 			photos: [],
 			loadingPhotos: true,
 		});
@@ -54,7 +58,6 @@ class MarsPics extends React.Component
 		const photos = await getPhotoLinks(dateKey, photosData);
 
 		this.setState({
-			selectedDate: date,
 			photos,
 			loadingPhotos: false,
 		});
@@ -137,7 +140,14 @@ class MarsPics extends React.Component
 			<>
 				<h2>Mars Pics</h2>
 				<div>
-					<p>See pictures from Mars taken at a set date.</p>
+					<p>
+						See pictures taken by a Mars rover on a given day. Uses
+						NASA&apos;s&nbsp;
+						<TabLink url={marsPhotoAPIURL}>
+							Marse Photo API
+						</TabLink>
+						.
+					</p>
 					{this.showDatePicker()}
 					{this.showPhotos()}
 				</div>
