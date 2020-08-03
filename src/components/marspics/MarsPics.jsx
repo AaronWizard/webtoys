@@ -22,15 +22,31 @@ class MarsPics extends React.Component
 		});
 	}
 
+	showDatePicker()
+	{
+		let result = null;
+		const { photosByDate } = this.state;
+		if (photosByDate)
+		{
+			console.log(photosByDate);
+			result = <p>Pick a date</p>;
+		}
+		else
+		{
+			result = <p>Loading</p>;
+		}
+		return result;
+	}
+
 	render()
 	{
-		const { photosByDate } = this.state;
-		console.log(photosByDate);
 		return (
 			<>
 				<h2>Mars Pics</h2>
 				<div>
 					<p>See pictures from Mars. Pick a Mars rover and a date.</p>
+
+					{this.showDatePicker()}
 				</div>
 				<HomeLink />
 			</>
