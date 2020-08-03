@@ -5,7 +5,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { getPhotosDataByDate, getPhotoLinks } from '../../apis/mars';
 
+import PopupImage from '../PopupImage';
 import HomeLink from '../HomeLink';
+
+import styles from '../../styles/marspics.module.scss';
 
 class MarsPics extends React.Component
 {
@@ -17,6 +20,7 @@ class MarsPics extends React.Component
 			selectedDate: null,
 			photos: [],
 			loadingPhotos: false,
+			currentPhoto: null,
 		};
 	}
 
@@ -56,6 +60,10 @@ class MarsPics extends React.Component
 		});
 	};
 
+	clickPhoto = (photo) => this.setState({ currentPhoto: photo });
+
+	popupHidden = () => this.setState({ currentPhoto: null });
+
 	showDatePicker()
 	{
 		let result = null;
@@ -64,6 +72,7 @@ class MarsPics extends React.Component
 		{
 			result = (
 				<DatePicker
+					className={styles.datepicker}
 					selected={selectedDate}
 					filterDate={this.filterDate}
 					onChange={this.selectNewDate}
@@ -87,9 +96,16 @@ class MarsPics extends React.Component
 		if (photos.length > 0)
 		{
 			result = (
-				<div>
+				<div className={styles.photos}>
 					{photos.map((p) => (
-						<img key={p.imageURL} src={p.imageURL} alt={p.rover} />
+						<button
+							key={p.imageURL}
+							className={styles.photowrapper}
+							type="button"
+							onClick={() => this.clickPhoto(p.imageURL)}
+						>
+							<img src={p.imageURL} alt={p.rover} />
+						</button>
 					))}
 				</div>
 			);
@@ -99,6 +115,19 @@ class MarsPics extends React.Component
 			result = <div>Loading photos</div>;
 		}
 
+		return result;
+	}
+
+	showCurrentPhoto()
+	{
+		let result = null;
+		const { currentPhoto } = this.state;
+		if (currentPhoto)
+		{
+			result = (
+				<PopupImage src={currentPhoto} onHidden={this.popupHidden} />
+			);
+		}
 		return result;
 	}
 
@@ -113,6 +142,7 @@ class MarsPics extends React.Component
 					{this.showPhotos()}
 				</div>
 				<HomeLink />
+				{this.showCurrentPhoto()}
 			</>
 		);
 	}
