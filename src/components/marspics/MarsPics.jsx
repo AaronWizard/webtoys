@@ -1,5 +1,8 @@
 import React from 'react';
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 import { getPhotosByDate } from '../../apis/mars';
 
 import HomeLink from '../HomeLink';
@@ -10,6 +13,7 @@ class MarsPics extends React.Component
 	{
 		super(props);
 		this.state = {
+			selectedDate: null,
 			photosByDate: null,
 		};
 	}
@@ -22,14 +26,20 @@ class MarsPics extends React.Component
 		});
 	}
 
+	selectNewDate = (date) => this.setState({ selectedDate: date });
+
 	showDatePicker()
 	{
 		let result = null;
-		const { photosByDate } = this.state;
+		const { selectedDate, photosByDate } = this.state;
 		if (photosByDate)
 		{
-			console.log(photosByDate);
-			result = <p>Pick a date</p>;
+			result = (
+				<DatePicker
+					selected={selectedDate}
+					onChange={this.selectNewDate}
+				/>
+			);
 		}
 		else
 		{
