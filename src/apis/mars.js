@@ -10,31 +10,43 @@ const cameraFilters = ['MAST', 'NAVCAM', 'PANCAM'];
 
 const cameraInFilter = (camera) => cameraFilters.includes(camera);
 
+const getPhotosFromRover = async (rover) =>
+{
+	const url = `${manifestUrl}${rover}?${apiParam}=${apiKey}`;
+	const resp = await axios.get(url);
+	const manifest = resp.data.photo_manifest;
+	const photos = manifest.photos.filter((p) => (
+		p.cameras.some((c) => cameraInFilter(c))
+	));
+
+	return photos;
+};
+
 export const getPhotosByDate = async () =>
 {
 	const photosByDate = {};
 
-	const rover = rovers[0];
-	const url = `${manifestUrl}${rover}?${apiParam}=${apiKey}`;
-	const resp = await axios.get(url);
-	const manifest = resp.data.photo_manifest;
-
-	manifest.photos.filter((p) => (
-		p.cameras.some((c) => cameraInFilter(c))
-	)).forEach((p) =>
+	for (let i = 0; i < rovers.length; i += 1)
 	{
-		const date = p.earth_date;
-		if (!Object.prototype.hasOwnProperty.call(photosByDate, date))
+		const rover = rovers[i];
+		getPhotosFromRover(rover).then((photos) =>
 		{
-			photosByDate[date] = [];
-		}
-		photosByDate[date].push(
+			photos.forEach((p) =>
 			{
-				rover,
-				cameras: p.cameras.filter((c) => cameraInFilter(c)),
-			},
-		);
-	});
+				const date = p.earth_date;
+				if (!Object.prototype.hasOwnProperty.call(photosByDate, date))
+				{
+					photosByDate[date] = [];
+				}
+				photosByDate[date].push(
+					{
+						rover,
+						cameras: p.cameras.filter((c) => cameraInFilter(c)),
+					},
+				);
+			});
+		});
+	}
 
 	return photosByDate;
 };
