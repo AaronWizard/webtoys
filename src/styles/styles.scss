@@ -35,6 +35,12 @@ a {
 	}
 }
 
+input:not([type=submit]):not([type=file]) {
+	padding: 0.5rem;
+	border-radius: 1rem;
+	font-size: 1rem;
+}
+
 .root {
 	width: 80%;
 	margin-left: auto;
