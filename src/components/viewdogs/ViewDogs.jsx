@@ -12,7 +12,7 @@ import styles from '../../styles/viewdogs.module.scss';
 const dogCount = 10; // viewdogs.module.scss, $_slide-count
 const visibleDogs = 4;
 
-const rotationSeconds = 0.25; // viewdogs.module.scss, $_rotationTime
+const rotationSeconds = 0.25; // viewdogs.module.scss, $_rotation-time
 const milliseconds = 1000;
 const rotationTime = rotationSeconds * milliseconds;
 

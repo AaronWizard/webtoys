@@ -1,0 +1,17 @@
+{
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-sass-guidelines"
+	],
+	"rules": {
+		"indentation": "tab",
+		"declaration-empty-line-before": null,
+		"rule-empty-line-before": [
+			"always",
+			{
+				"ignore": "inside-block"
+			}
+		],
+		"order/properties-alphabetical-order": null
+	}
+}

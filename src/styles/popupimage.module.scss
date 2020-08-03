@@ -1,4 +1,4 @@
-$_animationTime: 0.25s;
+$_animation-time: 0.25s;
 
 .popupimage {
 	position: absolute;
@@ -9,13 +9,13 @@ $_animationTime: 0.25s;
 
 	border-width: 0;
 
-	background-color: #00000088;
+	background-color: #0008;
 
 	padding: 2rem;
 
 	cursor: pointer;
 
-	animation: fadein $_animationTime;
+	animation: fadein $_animation-time;
 
 	img {
 		width: 100%;
@@ -34,7 +34,7 @@ $_animationTime: 0.25s;
 }
 
 .hiding {
-	animation: fadeOut $_animationTime;
+	animation: fadeOut $_animation-time;
 }
 
 @keyframes fadeOut {

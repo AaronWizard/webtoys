@@ -1,15 +1,15 @@
-@use "sass:math";
+@use 'sass:math';
 
 $_slide-count: 10;
-$_rotationTime: 0.25s;
+$_rotation-time: 0.25s;
 
-$_white: #FFFFFF;
-$_darkest_blue: #01060B;
-$_dark_blue: #0B4283;
-$_light_blue: #74A6E1;
-$_blue: #3072C1;
-$_light_green: #6AE1C0;
-$_green: #23C195;
+$_white: #fff;
+$_darkest-blue: #01060b;
+$_dark-blue: #0b4283;
+$_light-blue: #74a6e1;
+$_blue: #3072c1;
+$_light-green: #6ae1c0;
+$_green: #23c195;
 
 .dogview {
 	position: relative;
@@ -19,9 +19,9 @@ $_green: #23C195;
 }
 
 .wheelcontainer {
-	position: relative;
-
 	$width: 75%;
+
+	position: relative;
 	width: $width;
 	padding-bottom: $width;
 
@@ -32,15 +32,15 @@ $_slide-radius: 25%;
 $_wheel-padding: $_slide-radius - 12%;
 
 .wheeloutline {
+	$size: 100% - ($_wheel-padding * 2);
+	$border-size: 1px;
+
+	$real-size: calc(#{$size} - #{$border-size * 2});
+
 	position: absolute;
 
-	$size: 100% - ($_wheel-padding * 2);
-	$borderSize: 1px;
-
-	$realSize: calc(#{$size} - #{$borderSize * 2});
-
-	width: $realSize;
-	height: $realSize;
+	width: $real-size;
+	height: $real-size;
 
 	padding: $_wheel-padding;
 
@@ -48,10 +48,10 @@ $_wheel-padding: $_slide-radius - 12%;
 	border-radius: 100%;
 	border-width: 1px;
 	border-style: solid;
-	border-color: $_dark_blue;
+	border-color: $_dark-blue;
 }
 
-@mixin _transformSlide($index, $count) {
+@mixin transform-slide($index, $count) {
 	$step: 360deg / $count;
 	$degrees: -$step * ($index);
 
@@ -59,33 +59,33 @@ $_wheel-padding: $_slide-radius - 12%;
 	$y: (math.sin($degrees) * 50%) + 50%;
 
 	left: $x;
-	top:  $y;
+	top: $y;
 	transform: translate(-50%, -50%) rotate($degrees + 90deg);
 }
 
-@mixin _animatedTransformSlide($index, $count) {
+@mixin animated-transform-slide($index, $count) {
 	$animation-name: unique-id();
 
 	@keyframes #{$animation-name} {
 		0% {
-			@include _transformSlide($index, $count);
+			@include transform-slide($index, $count);
 		}
 		25% {
-			@include _transformSlide($index - 0.25, $count);
+			@include transform-slide($index - 0.25, $count);
 		}
 		50% {
-			@include _transformSlide($index - 0.5, $count);
+			@include transform-slide($index - 0.5, $count);
 		}
 		75% {
-			@include _transformSlide($index - 0.75, $count);
+			@include transform-slide($index - 0.75, $count);
 		}
 		100% {
-			@include _transformSlide($index - 1, $count);
+			@include transform-slide($index - 1, $count);
 		}
 	}
 
 	animation-name: $animation-name;
-	animation-duration: $_rotationTime;
+	animation-duration: $_rotation-time;
 	animation-timing-function: linear;
 }
 
@@ -97,7 +97,7 @@ $_wheel-padding: $_slide-radius - 12%;
 
 	@for $i from 1 through $_slide-count {
 		> .wheelslide:nth-of-type(#{$i}) {
-			@include _transformSlide($i, $_slide-count);
+			@include transform-slide($i, $_slide-count);
 		}
 	}
 }
@@ -105,7 +105,7 @@ $_wheel-padding: $_slide-radius - 12%;
 .slidemove {
 	@for $i from 1 through $_slide-count {
 		> .wheelslide:nth-of-type(#{$i}) {
-			@include _animatedTransformSlide($i, $_slide-count);
+			@include animated-transform-slide($i, $_slide-count);
 		}
 	}
 }
@@ -119,7 +119,7 @@ $_wheel-padding: $_slide-radius - 12%;
 	width: $_slide-radius;
 	height: $_slide-radius;
 
-	background-color: $_darkest_blue;
+	background-color: $_darkest-blue;
 	border-radius: 25%;
 	overflow: hidden;
 
@@ -141,21 +141,21 @@ $_view-box-height: 60%;
 $_view-box-border-radius: 2rem;
 
 .viewbox {
-	$borderWidth: 0.75rem;
+	$border-width: 0.75rem;
 
 	padding: 1rem;
 
 	position: absolute;
-	width: calc(100% - #{$borderWidth * 2});
-	height: calc(#{$_view-box-height} - #{$borderWidth * 2});
+	width: calc(100% - #{$border-width * 2});
+	height: calc(#{$_view-box-height} - #{$border-width * 2});
 	top: 100% - $_view-box-height;
 
 	overflow-y: scroll;
 
 	background-color: $_white;
-	border-color: $_light_blue;
+	border-color: $_light-blue;
 	border-style: outset;
-	border-width: $borderWidth;
+	border-width: $border-width;
 	border-radius: $_view-box-border-radius;
 
 	p {
@@ -169,24 +169,25 @@ $_view-box-border-radius: 2rem;
 }
 
 .viewboxbutton {
-	$borderWidth: 0.5rem;
-	padding: $borderWidth;
+	$border-width: 0.5rem;
 
-	$borderSize: $borderWidth * 2;
+	$border-size: $border-width * 2;
 
 	$size: 16%;
-	$realSize: calc(#{$size} + #{$borderSize});
+	$real-size: calc(#{$size} + #{$border-size});
 
-	max-width: $realSize;
+	padding: $border-width;
+
+	max-width: $real-size;
 
 	position: absolute;
 	right: 0%;
 	top: 0%;
 
-	background-color: $_light_green;
+	background-color: $_light-green;
 	border-color: $_green;
 	border-style: outset;
-	border-width: $borderWidth;
+	border-width: $border-width;
 	border-radius: $_view-box-border-radius;
 
 	display: flex;
