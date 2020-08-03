@@ -16,6 +16,7 @@ class MarsPics extends React.Component
 			photosDataByDate: null,
 			selectedDate: null,
 			photos: [],
+			loadingPhotos: false,
 		};
 	}
 
@@ -38,6 +39,11 @@ class MarsPics extends React.Component
 
 	selectNewDate = async (date) =>
 	{
+		this.setState({
+			photos: [],
+			loadingPhotos: true,
+		});
+
 		const { photosDataByDate } = this.state;
 		const dateKey = this.dateToKey(date);
 		const photosData = photosDataByDate[dateKey];
@@ -46,6 +52,7 @@ class MarsPics extends React.Component
 		this.setState({
 			selectedDate: date,
 			photos,
+			loadingPhotos: false,
 		});
 	};
 
@@ -76,7 +83,7 @@ class MarsPics extends React.Component
 	{
 		let result = null;
 
-		const { photos } = this.state;
+		const { photos, loadingPhotos } = this.state;
 		if (photos.length > 0)
 		{
 			result = (
@@ -86,6 +93,10 @@ class MarsPics extends React.Component
 					))}
 				</div>
 			);
+		}
+		else if (loadingPhotos)
+		{
+			result = <div>Loading photos</div>;
 		}
 
 		return result;
