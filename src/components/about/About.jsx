@@ -6,7 +6,8 @@ const About = () => (
 		A collection of front-end web projects.
 
 		<ul>
-			<li><Link to="/viewdogs">ViewDogs</Link></li>
+			<li><Link to="/viewdogs">View Dogs</Link></li>
+			<li><Link to="/marspics">Mars Pics</Link></li>
 		</ul>
 	</div>
 );
