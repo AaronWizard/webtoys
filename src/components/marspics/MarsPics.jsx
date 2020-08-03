@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { getPhotosByDate } from '../../apis/mars';
+
 import HomeLink from '../HomeLink';
 
 class MarsPics extends React.Component
@@ -8,17 +10,22 @@ class MarsPics extends React.Component
 	{
 		super(props);
 		this.state = {
-
+			photosByDate: null,
 		};
 	}
 
 	componentDidMount()
 	{
-
+		getPhotosByDate().then((photosByDate) =>
+		{
+			this.setState({ photosByDate });
+		});
 	}
 
 	render()
 	{
+		const { photosByDate } = this.state;
+		console.log(photosByDate);
 		return (
 			<>
 				<h2>Mars Pics</h2>
