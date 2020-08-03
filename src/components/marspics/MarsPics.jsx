@@ -3,7 +3,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { getPhotosByDate } from '../../apis/mars';
+import { getPhotosDataByDate, getPhotoLinks } from '../../apis/mars';
 
 import HomeLink from '../HomeLink';
 
@@ -14,41 +14,53 @@ class MarsPics extends React.Component
 		super(props);
 		this.state = {
 			selectedDate: null,
-			photosByDate: null,
+			photosDataByDate: null,
 		};
 	}
 
 	componentDidMount()
 	{
-		getPhotosByDate().then((photosByDate) =>
+		getPhotosDataByDate().then((photosDataByDate) =>
 		{
-			this.setState({ photosByDate });
+			this.setState({ photosDataByDate });
 		});
 	}
 
+	dateToKey = (date) => date.toISOString().split('T')[0];
+
 	filterDate = (date) =>
 	{
-		const { photosByDate } = this.state;
-		const dateKey = date.toISOString().split('T')[0];
-		return Object.prototype.hasOwnProperty.call(photosByDate, dateKey);
+		const { photosDataByDate } = this.state;
+		const dateKey = this.dateToKey(date);
+		return Object.prototype.hasOwnProperty.call(photosDataByDate, dateKey);
 	}
 
 	selectNewDate = (date) =>
 	{
 		this.setState({ selectedDate: date });
+
+		const { photosDataByDate } = this.state;
+		const dateKey = this.dateToKey(date);
+		const photosData = photosDataByDate[dateKey];
+		getPhotoLinks(dateKey, photosData).then((photos) =>
+		{
+			console.log('done');
+			console.log(photos);
+		});
 	};
 
 	showDatePicker()
 	{
 		let result = null;
-		const { selectedDate, photosByDate } = this.state;
-		if (photosByDate)
+		const { selectedDate, photosDataByDate } = this.state;
+		if (photosDataByDate)
 		{
 			result = (
 				<DatePicker
 					selected={selectedDate}
 					filterDate={this.filterDate}
 					onChange={this.selectNewDate}
+					dateFormat="yyyy-MM-dd"
 					placeholderText="Select a day"
 				/>
 			);
