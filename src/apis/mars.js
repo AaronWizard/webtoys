@@ -10,7 +10,7 @@ const earthDateParam = 'earth_date';
 const cameraParam = 'camera';
 
 const rovers = ['curiosity', 'opportunity', 'spirit'];
-const cameraFilters = ['MAST', 'NAVCAM', 'PANCAM'];
+const cameraFilters = ['NAVCAM', 'PANCAM'];
 
 const cameraInFilter = (camera) => cameraFilters.includes(camera);
 
@@ -32,9 +32,7 @@ const getPhotoLinksFromRover = async (dateStr, rover, camera) =>
 		+ `&${earthDateParam}=${dateStr}&${cameraParam}=${camera}`;
 	const resp = await axios.get(url);
 
-	console.log(url);
-
-	return resp.data.photos;
+	return resp.data.photos.map((p) => ({ rover, imageURL: p.img_src }));
 };
 
 export const getPhotosDataByDate = async () =>
@@ -73,8 +71,6 @@ export const getPhotosDataByDate = async () =>
 
 export const getPhotoLinks = async (dateStr, photosData) =>
 {
-	const photoLinks = [];
-
 	const photoResults = [];
 
 	for (let i = 0; i < photosData.length; i += 1)
@@ -88,8 +84,5 @@ export const getPhotoLinks = async (dateStr, photosData) =>
 	}
 	const results = await Promise.all(photoResults);
 
-	console.log('have results');
-	console.log(results);
-
-	return photoLinks;
+	return results.flat();
 };
