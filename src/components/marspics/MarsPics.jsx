@@ -144,7 +144,7 @@ class MarsPics extends React.Component
 						See pictures taken by a Mars rover on a given day. Uses
 						NASA&apos;s&nbsp;
 						<TabLink url={marsPhotoAPIURL}>
-							Marse Photo API
+							Mars Photo API
 						</TabLink>
 						.
 					</p>
