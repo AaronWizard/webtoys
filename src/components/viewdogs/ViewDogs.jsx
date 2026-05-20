@@ -131,6 +131,7 @@ class ViewDogs extends React.Component
 						type="button"
 						onClick={this.moreDogs}
 						className={styles.viewboxbutton}
+						disabled={addingDog}
 					>
 						More dogs
 					</button>
