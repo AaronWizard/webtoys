@@ -7,7 +7,7 @@ import TabLink from '../TabLink';
 import PopupImage from '../PopupImage';
 import HomeLink from '../HomeLink';
 
-import styles from '../../styles/viewdogs.module.scss';
+import * as styles from '../../styles/viewdogs.module.scss';
 
 const dogCount = 10; // viewdogs.module.scss, $_slide-count
 const visibleDogs = 4;

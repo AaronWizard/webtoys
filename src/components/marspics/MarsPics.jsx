@@ -9,7 +9,7 @@ import PopupImage from '../PopupImage';
 import TabLink from '../TabLink';
 import HomeLink from '../HomeLink';
 
-import styles from '../../styles/marspics.module.scss';
+import * as styles from '../../styles/marspics.module.scss';
 
 const marsPhotoAPIURL = 'https://github.com/chrisccerami/mars-photo-api';
 

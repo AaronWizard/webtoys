@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../styles/popupimage.module.scss';
+import * as styles from '../styles/popupimage.module.scss';
 
 const animationSeconds = 0.25; // popupimage.module.scss, $_animationTime
 const milliseconds = 1000;

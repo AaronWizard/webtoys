@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../styles/viewdogs.module.scss';
+import * as styles from '../../styles/viewdogs.module.scss';
 
 const wheelClass = (rotating) => [
 	styles.wheel,
