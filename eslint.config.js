@@ -52,6 +52,9 @@ export default [
 			"max-len": ["error", { code: 80 }],
 			"brace-style": ["error", "allman"],
 
+			"react/jsx-uses-react": "error",
+			"react/jsx-uses-vars": "error",
+
 			"react/jsx-indent": [2, "tab"],
 			"react/jsx-indent-props": [2, "tab"],
 			"react/static-property-placement": [
