@@ -17,6 +17,12 @@
                 }
             },
             "label": "npm: start"
+        },
+        {
+            "type": "npm",
+            "script": "deploy",
+            "problemMatcher": [],
+            "label": "npm: deploy"
         }
     ]
 }
