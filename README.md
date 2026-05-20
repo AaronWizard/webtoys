@@ -4,6 +4,8 @@ Aaron MacDonald, 2020
 
 A collection of front-end web projects.
 
+Deployed to my [GitHub home page](https://aaronwizard.github.io/webtoys/) using [gh-pages](https://github.com/tschaub/gh-pages). Run `npm run deploy` to build and deploy.
+
 ## ViewDogs
 
 A rotating wheel of dogs. Uses images from the [Dog API](https://dog.ceo/dog-api/).

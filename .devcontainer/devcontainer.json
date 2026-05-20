@@ -8,9 +8,11 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "streetsidesoftware.code-spell-checker",
+        "DavidAnson.vscode-markdownlint",
         "streetsidesoftware.code-spell-checker-canadian-english",
-        "stylelint.vscode-stylelint"
+        "streetsidesoftware.code-spell-checker",
+        "stylelint.vscode-stylelint",
+        "yzhang.markdown-all-in-one"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -23,6 +25,9 @@
         },
         "[scss]": {
           "editor.defaultFormatter": "stylelint.vscode-stylelint"
+        },
+        "[markdown]": {
+          "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
         },
         "editor.codeActionsOnSave": {
           "source.fixAll.eslint": "explicit",
