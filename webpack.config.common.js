@@ -1,7 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const sass = require('sass');
 
@@ -62,7 +61,6 @@ module.exports = {
 		extensions: ['*', '.js', '.jsx'],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
 		new StylelintPlugin(),
 		new ESLintPlugin(),
 		new HtmlWebPackPlugin({
@@ -70,4 +68,7 @@ module.exports = {
 			filename: './index.html',
 		}),
 	],
+	output: {
+		clean: true
+	}
 };
