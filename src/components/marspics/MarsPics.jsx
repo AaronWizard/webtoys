@@ -148,6 +148,11 @@ class MarsPics extends React.Component
 						</TabLink>
 						.
 					</p>
+					<p><em>
+						The Mars Photo API was retired in 2025 and is no longer
+						maintained. Therefore this page no longer works and is
+						being left up primarily for historical purposes.
+					</em></p>
 					{this.showDatePicker()}
 					{this.showPhotos()}
 				</div>
