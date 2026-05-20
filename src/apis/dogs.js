@@ -6,9 +6,8 @@ const getDogs = async (currentDogs, maxDogs) =>
 {
 	let result = currentDogs;
 
-	while (result.length < maxDogs)
+	while (result.length < maxDogs) 
 	{
-		// eslint-disable-next-line no-await-in-loop
 		const resp = await axios.get(`${url}${maxDogs - result.length}`);
 
 		const newDogs = resp.data.message;

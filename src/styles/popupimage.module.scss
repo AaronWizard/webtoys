@@ -29,17 +29,17 @@ $_animation-time: 0.25s;
 		opacity: 0;
 	}
 	100% {
-		opacity: 100%;
+		opacity: 1;
 	}
 }
 
 .hiding {
-	animation: fadeOut $_animation-time;
+	animation: fadeout $_animation-time;
 }
 
-@keyframes fadeOut {
+@keyframes fadeout {
 	0% {
-		opacity: 100%;
+		opacity: 1;
 	}
 	100% {
 		opacity: 0;
