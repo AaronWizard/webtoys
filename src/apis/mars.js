@@ -17,11 +17,22 @@ const cameraInFilter = (camera) => cameraFilters.includes(camera);
 const getPhotosManifestFromRover = async (rover) =>
 {
 	const url = `${manifestUrl}${rover}?${apiParam}=${apiKey}`;
-	const resp = await axios.get(url);
-	const manifest = resp.data.photo_manifest;
-	const photos = manifest.photos.filter((p) => (
-		p.cameras.some((c) => cameraInFilter(c))
-	));
+
+	let photos = [];
+	try
+	{
+		const resp = await axios.get(url);
+		photos = resp.data.photo_manifest.photos.filter((p) => (
+			p.cameras.some((c) => cameraInFilter(c))
+		));
+	}
+	catch (error)
+	{
+		console.error(
+			`Error loading photo manifest for rover '${rover}':`
+			+ ` ${error}`
+		);
+	}
 
 	return { rover, photos };
 };
@@ -30,9 +41,21 @@ const getPhotoLinksFromRover = async (dateStr, rover, camera) =>
 {
 	const url = `${photosUrl}${rover}/photos?${apiParam}=${apiKey}`
 		+ `&${earthDateParam}=${dateStr}&${cameraParam}=${camera}`;
-	const resp = await axios.get(url);
 
-	return resp.data.photos.map((p) => ({ rover, imageURL: p.img_src }));
+	let photoLinks = [];
+	try
+	{
+		const resp = await axios.get(url);
+		photoLinks = resp.data.photos.map(
+			(p) => ({ rover, imageURL: p.img_src })
+		);
+	}
+	catch (error)
+	{
+		console.error(`Error loading photo links: ${error}`);
+	}
+
+	return photoLinks;
 };
 
 export const getPhotosDataByDate = async () =>
