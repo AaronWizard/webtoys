@@ -3,7 +3,7 @@ import React from 'react';
 import TabLink from './TabLink';
 
 const name = 'Aaron MacDonald';
-const year = 2020;
+const year = 2026;
 const linkedInURL = 'https://www.linkedin.com/in/aaron-j-macdonald/';
 const githubURL = 'https://github.com/AaronWizard/webtoys';
 
